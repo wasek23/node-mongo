@@ -9,10 +9,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// const dbUsername = process.env.DB_USER;
-// const dbPassword = process.env.DB_PASS;
-// const uri = process.env.DB_PATH;
-const uri = 'mongodb+srv://fDemoDB:eghAc6DGEGbVuH9f@cluster0-i9tn9.mongodb.net/test?retryWrites=true&w=majority';
+const uri = process.env.DB_PATH;
 let client = new MongoClient(uri, { useNewUrlParser: true });
 
 
@@ -34,7 +31,6 @@ app.get('/products', (req, res) => {
                 res.send(documents);
             }
         });
-        console.log('connected');
         client.close();
     });
 });
